@@ -1,4 +1,5 @@
 import GeneralInfo from "./components/GeneralInfo";
+import Education from "./components/Education";
 import FormRender from "./components/FormRender";
 import React from "react";
 
@@ -7,28 +8,46 @@ class App extends React.Component {
     super();
 
     this.state = {
-      name: '',
-      email: '',
-      phone: '',
+      generalInfo: {
+        name: '',
+        email: '',
+        phone: '',
+      },
+      education: {
+        schoolName: '',
+        degreeAchieved: '',
+        dateOfStudy: '',
+      },
     };
   }
 
-  handleCallback = (childGeneralInfo) => {
-    console.log(childGeneralInfo);
+  getChildGeneral= (childGeneralInfo) => {
     this.setState({
-      name: childGeneralInfo.name,
-      email: childGeneralInfo.email,
-      phone: childGeneralInfo.phone
+      generalInfo: {
+        name: childGeneralInfo.name,
+        email: childGeneralInfo.email,
+        phone: childGeneralInfo.phone
+      }
     });
+  }
 
-    console.log(`PARENT ${childGeneralInfo.name}`);
+  getChildEducation = (childEducation) => {
+    this.setState({
+      education: {
+        schoolName: childEducation.schoolName,
+        degreeAchieved: childEducation.degreeAchieved,
+        dateOfStudy: childEducation.dateOfStudy,
+      }
+    });
   }
 
   render() {
     return (
       <div className="App">
-        <GeneralInfo parentCallback={this.handleCallback}/>
-        <FormRender name="d" />
+        <GeneralInfo parentCallback={this.getChildGeneral} />
+        <Education parentCallback={this.getChildEducation} />
+        <FormRender name={this.state.generalInfo.name} email={this.state.generalInfo.email} phone={this.state.generalInfo.phone} 
+        school={this.state.education.schoolName} degree={this.state.education.degreeAchieved} dates={this.state.education.dateOfStudy}/>
       </div>
     );
   }

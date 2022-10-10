@@ -30,11 +30,11 @@ export default class GeneralInfo extends React.Component {
   onFormSubmit = (e) => {
     this.props.parentCallback(this.state);
     e.preventDefault();
-    // this.setState({
-    //   name: e.target.name.value,
-    //   email: e.target.email.value,
-    //   phone: e.target.phone.value,
-    // })
+    this.setState({
+      name: '',
+      email: '',
+      phone: '',
+    })
 
     console.log(this.state.name);
   }
