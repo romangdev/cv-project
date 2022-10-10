@@ -35,8 +35,6 @@ export default class GeneralInfo extends React.Component {
       email: '',
       phone: '',
     })
-
-    console.log(this.state.name);
   }
 
   render() {

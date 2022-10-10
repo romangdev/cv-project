@@ -1,17 +1,21 @@
 import React from "react";
-import GeneralInfo from "./GeneralInfo";
 
 export default class FormRender extends React.Component {
 
   render() {
     return(
       <div className="CV">
-        <p>{this.props.name}</p>
-        <p>{this.props.email}</p>
-        <p>{this.props.phone}</p>
-        <p>{this.props.school}</p>
-        <p>{this.props.degree}</p>
-        <p>{this.props.dates}</p>
+        <p>{this.props.genInfoArr[0]}</p>
+        <p>{this.props.genInfoArr[1]}</p>
+        <p>{this.props.genInfoArr[2]}</p>
+        <p>{this.props.educationArr[0]}</p>
+        <p>{this.props.educationArr[1]}</p>
+        <p>{this.props.educationArr[2]}</p>
+        <p>{this.props.experienceArr[0]}</p>
+        <p>{this.props.experienceArr[1]}</p>
+        <p>{this.props.experienceArr[2]}</p>
+        <p>{this.props.experienceArr[3]}</p>
+        <p>{this.props.experienceArr[4]}</p>
       </div>
     );
   }
