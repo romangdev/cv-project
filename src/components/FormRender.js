@@ -13,7 +13,7 @@ export default class FormRender extends React.Component {
           </div>
         </div>
         <div className="education-cv">
-          <h2>Education Hisitory</h2>
+          <h2>Education History</h2>
           <p><strong>University: </strong> {this.props.educationArr[0]}</p>
           <p><strong>Degree: </strong>{this.props.educationArr[1]}</p>
           <p><strong>Years Attended: </strong>{this.props.educationArr[2]}</p>
