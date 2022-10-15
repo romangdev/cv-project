@@ -5,9 +5,13 @@ export default class FormRender extends React.Component {
   render() {
     return(
       <div className="CV">
-        <p>{this.props.genInfoArr[0]}</p>
-        <p>{this.props.genInfoArr[1]}</p>
-        <p>{this.props.genInfoArr[2]}</p>
+        <div className="gen-info-cv">
+          <p className="gen-info-name">{this.props.genInfoArr[0]}</p>
+          <div>
+            <p>{this.props.genInfoArr[1]}</p>
+            <p>{this.props.genInfoArr[2]}</p>
+          </div>
+        </div>
         <p>{this.props.educationArr[0]}</p>
         <p>{this.props.educationArr[1]}</p>
         <p>{this.props.educationArr[2]}</p>

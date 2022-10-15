@@ -55,7 +55,7 @@ export default class Education extends React.Component {
             <input type="text" id="degree" onChange={this.handleChange} value={degreeAchieved}></input>
           </div>
           <div>
-            <label htmlFor="date-of-study">Date of Study: </label>
+            <label htmlFor="date-of-study">Years Studied: </label>
             <input type="text" id="date-of-study" onChange={this.handleChange} value={dateOfStudy}></input>
           </div>
           <div>

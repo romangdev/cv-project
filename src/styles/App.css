@@ -57,6 +57,7 @@ table {
   margin: 50px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -94,4 +95,40 @@ button {
   height: 25px;
   margin-right: 20px;
   font-size: 1em;
+}
+
+.CV {
+  border: 1px solid black;
+  width: 850px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.CV div {
+  width: 675px;
+}
+
+.gen-info-cv div {
+  margin: auto;
+}
+
+.gen-info-cv {
+  display: flex;
+  flex-direction: column;
+}
+
+.gen-info-cv div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.gen-info-name {
+  text-align: center;
+  font-size: 1.8em;
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
 }
