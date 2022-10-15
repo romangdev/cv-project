@@ -53,6 +53,11 @@ table {
 
 /* MAIN CSS */
 
+html {
+  background-color: rgb(31, 31, 31);
+  color: white;
+}
+
 .App {
   margin: 50px;
   display: flex;
@@ -65,9 +70,17 @@ table {
   min-width: 400px;
 }
 
+input {
+  margin-left: 5px;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
 h1 {
   margin-bottom: 30px;
   font-size: 2em;
+  border: 2px solid white;
+  padding: 5px;
 }
 
 h2 {
@@ -76,7 +89,7 @@ h2 {
 
 .form-section {
   padding-bottom: 15px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
   margin-bottom: 20px;
 }
 
@@ -104,10 +117,30 @@ button {
   flex-direction: column;
   align-items: center;
   padding: 60px 0;
+  color: black;
+  background-color: white;
 }
 
 .CV div {
   width: 675px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.education-cv, .experience-cv {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border-left: 3px solid black;
+  padding-left: 20px;
+  padding-bottom: 15px;;
+}
+
+.education-cv h2, .experience-cv h2 {
+  margin-bottom: 15px;
 }
 
 .gen-info-cv div {
@@ -122,8 +155,9 @@ button {
 .gen-info-cv div {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   gap: 40px;
+  margin: 20px 0 40px 0;
 }
 
 .gen-info-name {
