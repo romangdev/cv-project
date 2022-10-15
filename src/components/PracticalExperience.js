@@ -39,23 +39,47 @@ export default class PracticalExperience extends React.Component {
     });
   }
 
+  onEdit = (e) => {
+    this.setState({
+      companyName: this.props.parentState.practicalExperience.companyName,
+      positionTitle: this.props.parentState.practicalExperience.positionTitle,
+      mainTasks: this.props.parentState.practicalExperience.mainTasks,
+      dateStarted: this.props.parentState.practicalExperience.dateStarted,
+      dateEnded: this.props.parentState.practicalExperience.dateEnded,
+    });
+  }
+
   render() {
     const { companyName, positionTitle, mainTasks, dateStarted, dateEnded } = this.state;
 
     return(
-      <div>
+      <div className="form-section">
         <form onSubmit={this.onSubmit}>
-          <label htmlFor="company-name">Company Name: </label>
-          <input type="text" id="company-name" onChange={this.onChange} value={companyName}></input>
-          <label htmlFor="position-title">Position Title: </label>
-          <input type="text" id="position-title" onChange={this.onChange} value={positionTitle}></input>
-          <label htmlFor="main-tasks">Main Tasks: </label>
-          <input type="text" id="main-tasks" onChange={this.onChange} value={mainTasks}></input>
-          <label htmlFor="date-started">Date Started: </label>
-          <input type="text" id="date-started" onChange={this.onChange} value={dateStarted}></input>
-          <label htmlFor="date-ended">Date Ended: </label>
-          <input type="text" id="date-ended" onChange={this.onChange} value={dateEnded}></input>
-          <button type="submit">Submit</button>
+          <h2>Work Experience</h2>
+          <div>
+            <label htmlFor="company-name">Company Name: </label>
+            <input type="text" id="company-name" onChange={this.onChange} value={companyName}></input>
+          </div>
+          <div>
+            <label htmlFor="position-title">Position Title: </label>
+            <input type="text" id="position-title" onChange={this.onChange} value={positionTitle}></input>
+          </div>
+          <div>
+            <label htmlFor="main-tasks">Main Tasks: </label>
+            <input type="text" id="main-tasks" onChange={this.onChange} value={mainTasks}></input>
+          </div>
+          <div>
+            <label htmlFor="date-started">Date Started: </label>
+            <input type="text" id="date-started" onChange={this.onChange} value={dateStarted}></input>
+          </div>
+          <div>
+            <label htmlFor="date-ended">Date Ended: </label>
+            <input type="text" id="date-ended" onChange={this.onChange} value={dateEnded}></input>
+          </div>
+          <div>
+            <button type="button" onClick={this.onEdit}>Edit</button>
+            <button type="submit">Submit</button>
+          </div>
         </form>
       </div>
     );

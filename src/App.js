@@ -79,13 +79,16 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <GeneralInfo parentCallback={this.getChildGeneral} />
-        <br></br>
-        <Education parentCallback={this.getChildEducation} />
-        <br></br>
-        <PracticalExperience parentCallback={this.getChildExperience}/>
+        <div className="form-inputs">
+          <h1>CV Maker</h1>
+          <GeneralInfo parentCallback={this.getChildGeneral} parentState={this.state} />
+          <br></br>
+          <Education parentCallback={this.getChildEducation} parentState={this.state} />
+          <br></br>
+          <PracticalExperience parentCallback={this.getChildExperience} parentState={this.state} />
+        </div>
         <FormRender genInfoArr={this.returnGenInfoArr()} educationArr={this.returnEducationArr()}
-        experienceArr={this.returnExperienceArr()}/>
+        experienceArr={this.returnExperienceArr()} />
       </div>
     );
   }

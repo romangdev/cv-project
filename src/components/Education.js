@@ -31,19 +31,37 @@ export default class Education extends React.Component {
     });
   }
 
+  onEdit = (e) => {
+    this.setState({
+      schoolName: this.props.parentState.education.schoolName,
+      degreeAchieved: this.props.parentState.education.degreeAchieved,
+      dateOfStudy: this.props.parentState.education.dateOfStudy,
+    });
+  }
+
   render() {
     const { schoolName, degreeAchieved, dateOfStudy } = this.state;
 
     return(
-      <div>
+      <div className="form-section">
         <form onSubmit={this.onSubmit}>
-          <label htmlFor="school-name">School Name: </label>
-          <input type="text" id="school-name" onChange={this.handleChange} value={schoolName}></input>
-          <label htmlFor="degree">Degree Achieved: </label>
-          <input type="text" id="degree" onChange={this.handleChange} value={degreeAchieved}></input>
-          <label htmlFor="date-of-study">Date of Study: </label>
-          <input type="text" id="date-of-study" onChange={this.handleChange} value={dateOfStudy}></input>
-          <button type="submit">Submit</button>
+          <h2>Education History</h2>
+          <div>
+            <label htmlFor="school-name">School Name: </label>
+            <input type="text" id="school-name" onChange={this.handleChange} value={schoolName}></input>
+          </div>
+          <div>
+            <label htmlFor="degree">Degree Achieved: </label>
+            <input type="text" id="degree" onChange={this.handleChange} value={degreeAchieved}></input>
+          </div>
+          <div>
+            <label htmlFor="date-of-study">Date of Study: </label>
+            <input type="text" id="date-of-study" onChange={this.handleChange} value={dateOfStudy}></input>
+          </div>
+          <div>
+            <button type="button" onClick={this.onEdit}>Edit</button>
+            <button type="submit">Submit</button>
+          </div>
         </form>
       </div>
     );
