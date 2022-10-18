@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# CV Maker
+
+A React based CV maker in which users can quickly render their career info into a CV format.
+
+<img width="1418" alt="cv" src="https://user-images.githubusercontent.com/74276666/196320179-3fc9b424-596d-4df6-8b99-7f156ec1a2a8.png">
+
+**You can see a LIVE version of the form here:** https://romangdev.github.io/cv-project/
+
+# How It's Made:
+Tech used: React.js, HTML, CSS, JS
+
+This CV Maker was made with React.
+
+# Optimizations
+If given more time with the project, I'd write many more parameters for a user to fill in on the screen to further flesh out their CV. Additionally, I'd add in functionality to allow users to dyanimically add in and subtract work experience sections. Furthermore, it'd be interesting to allow users to choose from multiple pre-built CV designs, rather than the current default one. 
+
+# Lessons Learned:
+This project was some great practice with many of the things I've learned about React. My main focus for this project was on getting comfortable with class based components specifically at first (which I'll eventually rewrite to function based components). I also learned a lot about organizing React projects, and some best practices in regards to passing state attributes around. I had some issues given the lack of a state manager like Redux that I had a bit of trouble figuring out how to overcome. But eventually, I found some slick workarounds that seem obvious now, but weren't initially.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
