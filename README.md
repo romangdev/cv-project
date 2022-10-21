@@ -4,7 +4,7 @@ A React based CV maker in which users can quickly render their career info into 
 
 <img width="1418" alt="cv" src="https://user-images.githubusercontent.com/74276666/196320179-3fc9b424-596d-4df6-8b99-7f156ec1a2a8.png">
 
-**You can see a LIVE version of the form here:** https://romangdev.github.io/cv-project/
+**You can see a LIVE version of the form here:** https://cyruscvmaker.netlify.app
 
 # How It's Made:
 Tech used: React.js, HTML, CSS, JS
