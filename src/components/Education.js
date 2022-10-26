@@ -1,69 +1,52 @@
 import React from "react";
+import InfoInput from "./InfoInput";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import { useState } from "react";
 
-export default class Education extends React.Component {
-  constructor() {
-    super();
+const Education = ({ parentCallback, parentState }) => {
+  const [schoolName, setSchoolName] = useState('')
+  const [degreeAchieved, setDegreeAchieved] = useState('')
+  const [dateOfStudy, setDateOfStudy] = useState('')
 
-    this.state = {
-      schoolName: '',
-      degreeAchieved: '',
-      dateOfStudy: '',
-    }
-  }
-
-  handleChange = (e) => {
+  const handleChange = (e) => {
     if (e.target.id === 'school-name') {
-      this.setState({schoolName: e.target.value});
+      setSchoolName(e.target.value)
     } else if (e.target.id === 'degree') {
-      this.setState({degreeAchieved: e.target.value});
+      setDegreeAchieved(e.target.value)
     } else if (e.target.id === 'date-of-study') {
-      this.setState({dateOfStudy: e.target.value});  
+      setDateOfStudy(e.target.value)  
     }
   }
 
-  onSubmit = (e) => {
-    this.props.parentCallback(this.state);
+  const onSubmit = (e) => {
+    parentCallback([schoolName, degreeAchieved, dateOfStudy]);
     e.preventDefault();
-    this.setState({
-      schoolName: '',
-      degreeAchieved: '',
-      dateOfStudy: '',
-    });
+    setSchoolName('')
+    setDegreeAchieved('')
+    setDateOfStudy('')
   }
 
-  onEdit = (e) => {
-    this.setState({
-      schoolName: this.props.parentState.education.schoolName,
-      degreeAchieved: this.props.parentState.education.degreeAchieved,
-      dateOfStudy: this.props.parentState.education.dateOfStudy,
-    });
+  const onEdit = (e) => {
+    setSchoolName(parentState.schoolName)
+    setDegreeAchieved(parentState.degreeAchieved)
+    setDateOfStudy(parentState.dateOfStudy)
   }
 
-  render() {
-    const { schoolName, degreeAchieved, dateOfStudy } = this.state;
-
-    return(
-      <div className="form-section">
-        <form onSubmit={this.onSubmit}>
-          <h2>Education History</h2>
-          <div>
-            <label htmlFor="school-name">School Name: </label>
-            <input type="text" id="school-name" onChange={this.handleChange} value={schoolName}></input>
-          </div>
-          <div>
-            <label htmlFor="degree">Degree Achieved: </label>
-            <input type="text" id="degree" onChange={this.handleChange} value={degreeAchieved}></input>
-          </div>
-          <div>
-            <label htmlFor="date-of-study">Years Studied: </label>
-            <input type="text" id="date-of-study" onChange={this.handleChange} value={dateOfStudy}></input>
-          </div>
-          <div>
-            <button type="button" onClick={this.onEdit}>Edit</button>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
-    );
-  }
+  return(
+    <div className="form-section">
+      <form onSubmit={onSubmit}>
+        <h2>Education History</h2>
+        <InfoInput id={'school-name'} label={'School Name: '} onChange={handleChange} value={schoolName} />
+        <InfoInput id={'degree'} label={'Degree Achieved: '} onChange={handleChange} value={degreeAchieved} />
+        <InfoInput id={'date-of-study'} label={'Dates of Study: '} onChange={handleChange} value={dateOfStudy} />
+        <Stack spacing={2} direction="row">
+          <Button variant="contained" onClick={onEdit}>Edit</Button>
+          <Button variant="contained" type="submit">Submit</Button>
+        </Stack>
+      </form>
+    </div>
+  );
 }
+
+export default Education

@@ -1,75 +1,52 @@
 import React from "react";
+import Button from '@mui/material/Button';
+import InfoInput from './InfoInput'
+import Stack from '@mui/material/Stack';
+import { useState } from "react";
 
-export default class GeneralInfo extends React.Component {
-  constructor() {
-    super();
+const GeneralInfo = ({ parentCallback, parentState }) => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
 
-    this.state = {
-      name: '',
-      email: '',
-      phone: '',
-    };
-  }
-
-  handleChange = (e) => {
+  const handleChange = (e) => {
     if (e.target.id === "name") {
-      this.setState({
-        name: e.target.value,
-      });
+      setName(e.target.value)
     } else if (e.target.id === "email") {
-      this.setState({
-        email: e.target.value,
-      });
+      setEmail(e.target.value)
     } else if (e.target.id === "phone") {
-      this.setState({
-        phone: e.target.value,
-      });
+      setPhone(e.target.value)
     } 
   }
 
-  onFormSubmit = (e) => {
-    this.props.parentCallback(this.state);
+  const onFormSubmit = (e) => {
+    parentCallback([name, email, phone]);
     e.preventDefault();
-    this.setState({
-      name: '',
-      email: '',
-      phone: '',
-    })
+    setName('')
+    setEmail('')
+    setPhone('')
   }
 
-  onEdit = (e) => {
-    this.setState({
-      name: this.props.parentState.generalInfo.name,
-      email: this.props.parentState.generalInfo.email,
-      phone: this.props.parentState.generalInfo.phone,
-    });
+  const onEdit = (e) => {
+    setName(parentState.name)
+    setEmail(parentState.email)
+    setPhone(parentState.phone)
   }
 
-  render() {
-    const { name, email, phone } = this.state;
-
-    return(
-      <div className="form-section">
-        <form onSubmit={this.onFormSubmit}>
-          <h2>General Information</h2>
-          <div>
-            <label htmlFor="name">Name: </label>
-            <input type="text" id="name" onChange={this.handleChange} value={name}></input>
-          </div>
-          <div>
-            <label htmlFor="email">Email: </label>
-            <input type="email" id="email" onChange={this.handleChange} value={email}></input>
-          </div>
-          <div>
-            <label htmlFor="phone">Phone Number: </label>
-            <input type="phone" id="phone" onChange={this.handleChange} value={phone}></input>
-          </div>
-          <div>
-            <button type="button" onClick={this.onEdit}>Edit</button>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
-    );
-  }
+  return(
+    <div className="form-section">
+      <form onSubmit={onFormSubmit}>
+        <h2>General Information</h2>
+        <InfoInput id={'name'} label={'Name: '} onChange={handleChange} value={name} />
+        <InfoInput id={'email'} label={'Email: '} onChange={handleChange} value={email} />
+        <InfoInput id={'phone'} label={'Phone Number: '} onChange={handleChange} value={phone} />
+        <Stack spacing={2} direction="row">
+          <Button variant="contained" onClick={onEdit}>Edit</Button>
+          <Button variant="contained" type="submit">Submit</Button>
+        </Stack>
+      </form>
+    </div>
+  );
 }
+
+export default GeneralInfo

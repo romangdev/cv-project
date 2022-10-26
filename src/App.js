@@ -3,95 +3,68 @@ import Education from "./components/Education";
 import FormRender from "./components/FormRender";
 import React from "react";
 import PracticalExperience from "./components/PracticalExperience";
+import { useState } from 'react'
 
-class App extends React.Component {
-  constructor() {
-    super();
+const App = () => {
+  const [generalInfo, setGeneralInfo] = useState({
+    name: '',
+    email: '',
+    phone: '',
+  })
 
-    this.state = {
-      generalInfo: {
-        name: '',
-        email: '',
-        phone: '',
-      },
-      education: {
-        schoolName: '',
-        degreeAchieved: '',
-        dateOfStudy: '',
-      },
-      practicalExperience: {
-        companyName: '',
-        positionTitle: '',
-        mainTasks: '',
-        dateStarted: '',
-        dateEnded: '',
-      },
-    };
-  }
+  const [education, setEducation] = useState({
+    schoolName: '',
+    degreeAchieved: '',
+    dateOfStudy: '',
+  })
 
-  getChildGeneral= (childGeneralInfo) => {
-    this.setState({
-      generalInfo: {
-        name: childGeneralInfo.name,
-        email: childGeneralInfo.email,
-        phone: childGeneralInfo.phone
-      }
-    });
-  }
+  const [practicalExperience, setPracticalExperience] = useState({
+    companyName: '',
+    positionTitle: '',
+    mainTasks: '',
+    dateStarted: '',
+    dateEnded: '',
+  })
 
-  getChildEducation = (childEducation) => {
-    this.setState({
-      education: {
-        schoolName: childEducation.schoolName,
-        degreeAchieved: childEducation.degreeAchieved,
-        dateOfStudy: childEducation.dateOfStudy,
-      }
-    });
-  }
-
-  getChildExperience = (childExperience) => {
-    this.setState({
-      practicalExperience: {
-        companyName: childExperience.companyName,
-        positionTitle: childExperience.positionTitle,
-        mainTasks: childExperience.mainTasks,
-        dateStarted: childExperience.dateStarted,
-        dateEnded: childExperience.dateEnded,
-      }
+  const getChildGeneral= (childGeneralInfo) => {
+    setGeneralInfo({
+      name: childGeneralInfo[0],
+      email: childGeneralInfo[1],
+      phone: childGeneralInfo[2]
     })
   }
 
-  returnGenInfoArr = () => {
-    const { name, email, phone } = this.state.generalInfo;
-    return [name, email, phone];
+  const getChildEducation = (childEducation) => {
+    setEducation({
+      schoolName: childEducation[0],
+      degreeAchieved: childEducation[1],
+      dateOfStudy: childEducation[2],
+    })
   }
 
-  returnEducationArr = () => {
-    const { schoolName, degreeAchieved, dateOfStudy } = this.state.education;
-    return [schoolName, degreeAchieved, dateOfStudy];
+  const getChildExperience = (childExperience) => {
+    setPracticalExperience({
+      companyName: childExperience[0],
+      positionTitle: childExperience[1],
+      mainTasks: childExperience[2],
+      dateStarted: childExperience[3],
+      dateEnded: childExperience[4],
+    })
   }
 
-  returnExperienceArr = () => {
-    const { companyName, positionTitle, mainTasks, dateStarted, dateEnded } = this.state.practicalExperience;
-    return [companyName, positionTitle, mainTasks, dateStarted, dateEnded];
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <div className="form-inputs">
-          <h1>CV Maker</h1>
-          <GeneralInfo parentCallback={this.getChildGeneral} parentState={this.state} />
-          <br></br>
-          <Education parentCallback={this.getChildEducation} parentState={this.state} />
-          <br></br>
-          <PracticalExperience parentCallback={this.getChildExperience} parentState={this.state} />
-        </div>
-        <FormRender genInfoArr={this.returnGenInfoArr()} educationArr={this.returnEducationArr()}
-        experienceArr={this.returnExperienceArr()} />
+  return (
+    <div className="App">
+      <div className="form-inputs">
+        <h1>CV Maker</h1>
+        <GeneralInfo parentCallback={getChildGeneral} parentState={generalInfo} />
+        <br></br>
+        <Education parentCallback={getChildEducation} parentState={education} />
+        <br></br>
+        <PracticalExperience parentCallback={getChildExperience} parentState={practicalExperience} />
       </div>
-    );
-  }
+      <FormRender genInfo={generalInfo} education={education} experience={practicalExperience} />
+    </div>
+  );
 }
 
 export default App;

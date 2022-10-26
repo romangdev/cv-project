@@ -1,87 +1,64 @@
 import React from "react";
+import InfoInput from "./InfoInput";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import { useState } from "react";
 
-export default class PracticalExperience extends React.Component {
-  constructor() {
-    super();
+const PracticalExperience = ({ parentCallback, parentState }) => {
+  const [companyName, setCompanyName] = useState('')
+  const [positionTitle, setPositionTitle] = useState('')
+  const [mainTasks, setMainTasks] = useState('')
+  const [dateStarted, setDateStarted] = useState('')
+  const [dateEnded, setDateEnded] = useState('')
 
-    this.state = {
-      companyName: '',
-      positionTitle: '',
-      mainTasks: '',
-      dateStarted: '',
-      dateEnded: '',
-    }
-  }
-
-  onChange = (e) => {
+  const onChange = (e) => {
     if (e.target.id === 'company-name') {
-      this.setState({companyName: e.target.value});
+      setCompanyName(e.target.value)
     } else if (e.target.id === 'position-title') {
-      this.setState({positionTitle: e.target.value});
+      setPositionTitle(e.target.value)
     } else if (e.target.id === 'main-tasks') {
-      this.setState({mainTasks: e.target.value});
+      setMainTasks(e.target.value)
     } else if (e.target.id === 'date-started') {
-      this.setState({dateStarted: e.target.value});  
+      setDateStarted(e.target.value) 
     } else if (e.target.id === 'date-ended') {
-      this.setState({dateEnded: e.target.value});
+      setDateEnded(e.target.value)
     }
   }
 
-  onSubmit = (e) => {
-    this.props.parentCallback(this.state);
+  const onSubmit = (e) => {
+    parentCallback([companyName, positionTitle, mainTasks, dateStarted, dateEnded]);
     e.preventDefault();
-    this.setState({
-      companyName: '',
-      positionTitle: '',
-      mainTasks: '',
-      dateStarted: '',
-      dateEnded: '',
-    });
+    setCompanyName('')
+    setPositionTitle('')
+    setMainTasks('')
+    setDateStarted('') 
+    setDateEnded('')
   }
 
-  onEdit = (e) => {
-    this.setState({
-      companyName: this.props.parentState.practicalExperience.companyName,
-      positionTitle: this.props.parentState.practicalExperience.positionTitle,
-      mainTasks: this.props.parentState.practicalExperience.mainTasks,
-      dateStarted: this.props.parentState.practicalExperience.dateStarted,
-      dateEnded: this.props.parentState.practicalExperience.dateEnded,
-    });
+  const onEdit = (e) => {
+    setCompanyName(parentState.companyName)
+    setPositionTitle(parentState.positionTitle)
+    setMainTasks(parentState.mainTasks)
+    setDateStarted(parentState.dateStarted) 
+    setDateEnded(parentState.dateEnded)
   }
 
-  render() {
-    const { companyName, positionTitle, mainTasks, dateStarted, dateEnded } = this.state;
-
-    return(
-      <div className="form-section">
-        <form onSubmit={this.onSubmit}>
-          <h2>Work Experience</h2>
-          <div>
-            <label htmlFor="company-name">Company Name: </label>
-            <input type="text" id="company-name" onChange={this.onChange} value={companyName}></input>
-          </div>
-          <div>
-            <label htmlFor="position-title">Position Title: </label>
-            <input type="text" id="position-title" onChange={this.onChange} value={positionTitle}></input>
-          </div>
-          <div>
-            <label htmlFor="main-tasks">Main Tasks: </label>
-            <input type="text" id="main-tasks" onChange={this.onChange} value={mainTasks}></input>
-          </div>
-          <div>
-            <label htmlFor="date-started">Date Started: </label>
-            <input type="text" id="date-started" onChange={this.onChange} value={dateStarted}></input>
-          </div>
-          <div>
-            <label htmlFor="date-ended">Date Ended: </label>
-            <input type="text" id="date-ended" onChange={this.onChange} value={dateEnded}></input>
-          </div>
-          <div>
-            <button type="button" onClick={this.onEdit}>Edit</button>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div className="form-section">
+      <form onSubmit={onSubmit}>
+        <h2>Work Experience</h2>
+        <InfoInput id={'company-name'} label={'Company Name: '} onChange={onChange} value={companyName} />
+        <InfoInput id={'position-title'} label={'Position Title: '} onChange={onChange} value={positionTitle} />
+        <InfoInput id={'main-tasks'} label={'Main Tasks: '} onChange={onChange} value={mainTasks} />
+        <InfoInput id={'date-started'} label={'Start Date: '} onChange={onChange} value={dateStarted} />
+        <InfoInput id={'date-ended'} label={'End Date: '} onChange={onChange} value={dateEnded} />
+        <Stack spacing={2} direction="row">
+          <Button variant="contained" onClick={onEdit}>Edit</Button>
+          <Button variant="contained" type="submit">Submit</Button>
+        </Stack>
+      </form>
+    </div>
+  );
 }
+
+export default PracticalExperience
