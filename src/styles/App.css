@@ -130,17 +130,17 @@ strong {
 }
 
 .education-cv, .experience-cv {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 13px;
   border-left: 3px solid black;
   padding-left: 20px;
   padding-bottom: 15px;;
 }
 
 .education-cv h2, .experience-cv h2 {
-  margin-bottom: 15px;
+  margin-bottom: 0px;
 }
 
 .gen-info-cv div {
@@ -165,4 +165,12 @@ strong {
   font-size: 1.8em;
   border-bottom: 1px solid black;
   padding-bottom: 15px;
+}
+
+.education-cv-sec p {
+  margin: 10px 0;
+}
+
+.education-form-one, .education-form-two {
+  margin-top: 25px;
 }

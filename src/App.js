@@ -7,9 +7,9 @@ import { useState } from 'react'
 
 const App = () => {
   const [generalInfo, setGeneralInfo] = useState({
-    name: '',
-    email: '',
-    phone: '',
+    name: 'Your Name',
+    email: 'yourcoolemail222@blah.com',
+    phone: '123 456 7890',
   })
 
   const [education, setEducation] = useState([
@@ -86,13 +86,30 @@ const App = () => {
     })
   }
 
+  const resetSecondEducationValues = (resetArray) => {
+    const educationCopy = education.map(info => {
+      if (info.id === 2) {
+        return {
+          schoolName: '',
+          degreeAchieved: '',
+          dateOfStudy: '',
+          id: 2
+        }
+      } else {
+        return info
+      }
+    })
+    setEducation(educationCopy)
+  }
+
+
   return (
     <div className="App">
       <div className="form-inputs">
-        <h1>CV Maker</h1>
+        <h1>Cyrus CV Maker</h1>
         <GeneralInfo parentCallback={getChildGeneral} parentState={generalInfo} />
         <br></br>
-        <Education parentCallback={getChildEducation} parentState={education} />
+        <Education parentCallback={getChildEducation} parentState={education} parentResetCallback={resetSecondEducationValues} />
         <br></br>
         <PracticalExperience parentCallback={getChildExperience} parentState={practicalExperience} />
       </div>

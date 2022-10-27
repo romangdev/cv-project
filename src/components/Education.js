@@ -2,7 +2,7 @@ import React from "react";
 import EducationForm from "./EducationForm";
 import { useState } from "react";
 
-const Education = ({ parentCallback, parentState }) => {
+const Education = ({ parentCallback, parentState, parentResetCallback }) => {
   const [schoolNameOne, setSchoolNameOne] = useState('')
   const [degreeAchievedOne, setDegreeAchievedOne] = useState('')
   const [dateOfStudyOne, setDateOfStudyOne] = useState('')
@@ -61,6 +61,11 @@ const Education = ({ parentCallback, parentState }) => {
   const addEducationForm = () => {
     setSecondForm(true)
   }
+
+  const removeEducationForm = () => {
+    setSecondForm(false)
+    parentResetCallback()
+  }
   
   return (
     <div className="form-section">
@@ -70,7 +75,7 @@ const Education = ({ parentCallback, parentState }) => {
       formTwo={false} editClass={'education-edit-one'} />
       {secondForm ?
         <EducationForm onSubmit={onSubmit} handleChange={handleChange} onEdit={onEdit} schoolName={schoolNameTwo}
-        degreeAchieved={degreeAchievedTwo} dateOfStudy={dateOfStudyTwo} secondForm={secondForm}
+        degreeAchieved={degreeAchievedTwo} dateOfStudy={dateOfStudyTwo} secondForm={secondForm} removeForm={removeEducationForm}
         formTwo={true} editClass={'education-edit-two'} />
         :
         <></>

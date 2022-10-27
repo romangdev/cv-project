@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
 const EducationForm = ({ onSubmit, handleChange, onEdit, schoolName, degreeAchieved, dateOfStudy, 
-  addForm, secondForm, formTwo, editClass}) => {
+  addForm, secondForm, formTwo, editClass, removeForm}) => {
   return (
     <form onSubmit={onSubmit} className={formTwo ? 'education-form-two' : 'education-form-one'}>
       {formTwo ?
@@ -28,6 +28,11 @@ const EducationForm = ({ onSubmit, handleChange, onEdit, schoolName, degreeAchie
           <></>
           :
           <Button variant="contained" onClick={addForm}>Add</Button>
+        }
+        {formTwo ?
+          <Button variant="contained" onClick={removeForm}>Remove</Button>
+          :
+          <></>
         }
       </Stack>
     </form>
