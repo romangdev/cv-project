@@ -12,11 +12,20 @@ const App = () => {
     phone: '',
   })
 
-  const [education, setEducation] = useState({
-    schoolName: '',
-    degreeAchieved: '',
-    dateOfStudy: '',
-  })
+  const [education, setEducation] = useState([
+    {
+      schoolName: '',
+      degreeAchieved: '',
+      dateOfStudy: '',
+      id: 1
+    },
+    {
+      schoolName: '',
+      degreeAchieved: '',
+      dateOfStudy: '',
+      id: 2
+    },
+  ])
 
   const [practicalExperience, setPracticalExperience] = useState({
     companyName: '',
@@ -34,12 +43,37 @@ const App = () => {
     })
   }
 
-  const getChildEducation = (childEducation) => {
-    setEducation({
-      schoolName: childEducation[0],
-      degreeAchieved: childEducation[1],
-      dateOfStudy: childEducation[2],
-    })
+  const getChildEducation = (childEducation, formNumber) => {
+    if (formNumber === 'education-form-one') {
+      const educationCopy = education.map(info => {
+        if (info.id === 1) {
+          return {
+            schoolName: childEducation[0],
+            degreeAchieved: childEducation[1],
+            dateOfStudy: childEducation[2],
+            id: 1
+          }
+        } else {
+          return info
+        }
+      })
+      setEducation(educationCopy)
+
+    } else {
+      const educationCopy = education.map(info => {
+        if (info.id === 2) {
+          return {
+            schoolName: childEducation[0],
+            degreeAchieved: childEducation[1],
+            dateOfStudy: childEducation[2],
+            id: 2
+          }
+        } else {
+          return info
+        }
+      })
+      setEducation(educationCopy)
+    }
   }
 
   const getChildExperience = (childExperience) => {

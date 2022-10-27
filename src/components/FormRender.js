@@ -12,9 +12,9 @@ const FormRender = ({ genInfo, education, experience }) => {
       </div>
       <div className="education-cv">
         <h2>Education History</h2>
-        <p><strong>University: </strong> {education.schoolName}</p>
-        <p><strong>Degree: </strong>{education.degreeAchieved}</p>
-        <p><strong>Years Attended: </strong>{education.dateOfStudy}</p>
+        <p><strong>University: </strong> {education[0].schoolName}</p>
+        <p><strong>Degree: </strong>{education[0].degreeAchieved}</p>
+        <p><strong>Years Attended: </strong>{education[0].dateOfStudy}</p>
       </div>
       <div className="experience-cv">
         <h2>Work Experience</h2>
