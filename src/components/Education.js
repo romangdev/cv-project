@@ -1,5 +1,5 @@
 import React from "react";
-import InfoInput from "./InfoInput";
+import EducationForm from "./EducationForm";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { useState } from "react";
@@ -8,6 +8,7 @@ const Education = ({ parentCallback, parentState }) => {
   const [schoolName, setSchoolName] = useState('')
   const [degreeAchieved, setDegreeAchieved] = useState('')
   const [dateOfStudy, setDateOfStudy] = useState('')
+  const [secondForm, setSecondForm] = useState(false)
 
   const handleChange = (e) => {
     if (e.target.id === 'school-name') {
@@ -33,18 +34,21 @@ const Education = ({ parentCallback, parentState }) => {
     setDateOfStudy(parentState.dateOfStudy)
   }
 
-  return(
+  const addEducationForm = () => {
+    setSecondForm(true)
+  }
+  
+  return (
     <div className="form-section">
-      <form onSubmit={onSubmit}>
-        <h2>Education History</h2>
-        <InfoInput id={'school-name'} label={'School Name: '} onChange={handleChange} value={schoolName} />
-        <InfoInput id={'degree'} label={'Degree Achieved: '} onChange={handleChange} value={degreeAchieved} />
-        <InfoInput id={'date-of-study'} label={'Dates of Study: '} onChange={handleChange} value={dateOfStudy} />
-        <Stack spacing={2} direction="row">
-          <Button variant="contained" onClick={onEdit}>Edit</Button>
-          <Button variant="contained" type="submit">Submit</Button>
-        </Stack>
-      </form>
+      <h2>Education History</h2>
+      <EducationForm onSubmit={onSubmit} handleChange={handleChange} onEdit={onEdit} schoolName={schoolName}
+      degreeAchieved={degreeAchieved} dateOfStudy={dateOfStudy} addForm={addEducationForm} secondForm={secondForm} />
+      {secondForm ?
+        <EducationForm onSubmit={onSubmit} handleChange={handleChange} onEdit={onEdit} schoolName={schoolName}
+        degreeAchieved={degreeAchieved} dateOfStudy={dateOfStudy} addForm={addEducationForm} secondForm={secondForm} />
+        :
+        <></>
+      }
     </div>
   );
 }
