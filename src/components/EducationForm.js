@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
 const EducationForm = ({ onSubmit, handleChange, onEdit, schoolName, degreeAchieved, dateOfStudy, 
-  addForm, secondForm, formTwo}) => {
+  addForm, secondForm, formTwo, editClass}) => {
   return (
     <form onSubmit={onSubmit} className={formTwo ? 'education-form-two' : 'education-form-one'}>
       {formTwo ?
@@ -22,7 +22,7 @@ const EducationForm = ({ onSubmit, handleChange, onEdit, schoolName, degreeAchie
         <InfoInput id={'date-of-study-one'} label={'Dates of Study: '} onChange={handleChange} value={dateOfStudy} />
       }
       <Stack spacing={2} direction="row">
-        <Button variant="contained" onClick={onEdit}>Edit</Button>
+        <Button variant="contained" onClick={onEdit} className={editClass}>Edit</Button>
         <Button variant="contained" type="submit">Submit</Button>
         {secondForm ?
           <></>

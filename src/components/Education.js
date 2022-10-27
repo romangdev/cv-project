@@ -47,13 +47,15 @@ const Education = ({ parentCallback, parentState }) => {
   }
 
   const onEdit = (e) => {
-    console.log(parentState)
-    setSchoolNameOne(parentState[0].schoolName)
-    setDegreeAchievedOne(parentState[0].degreeAchieved)
-    setDateOfStudyOne(parentState[0].dateOfStudy)
-    setSchoolNameTwo(parentState[1].schoolName)
-    setDegreeAchievedTwo(parentState[1].degreeAchieved)
-    setDateOfStudyTwo(parentState[1].dateOfStudy)
+    if (e.target.className.includes('education-edit-one')) {
+      setSchoolNameOne(parentState[0].schoolName)
+      setDegreeAchievedOne(parentState[0].degreeAchieved)
+      setDateOfStudyOne(parentState[0].dateOfStudy)
+    } else {
+      setSchoolNameTwo(parentState[1].schoolName)
+      setDegreeAchievedTwo(parentState[1].degreeAchieved)
+      setDateOfStudyTwo(parentState[1].dateOfStudy)
+    }
   }
 
   const addEducationForm = () => {
@@ -65,11 +67,11 @@ const Education = ({ parentCallback, parentState }) => {
       <h2>Education History</h2>
       <EducationForm onSubmit={onSubmit} handleChange={handleChange} onEdit={onEdit} schoolName={schoolNameOne}
       degreeAchieved={degreeAchievedOne} dateOfStudy={dateOfStudyOne} addForm={addEducationForm} secondForm={secondForm}
-      formTwo={false} />
+      formTwo={false} editClass={'education-edit-one'} />
       {secondForm ?
         <EducationForm onSubmit={onSubmit} handleChange={handleChange} onEdit={onEdit} schoolName={schoolNameTwo}
         degreeAchieved={degreeAchievedTwo} dateOfStudy={dateOfStudyTwo} secondForm={secondForm}
-        formTwo={true} />
+        formTwo={true} editClass={'education-edit-two'} />
         :
         <></>
       }
