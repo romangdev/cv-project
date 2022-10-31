@@ -1,23 +1,22 @@
 # CV Maker
 
-A React based CV maker in which users can quickly render their career info into a CV format.
+A React based CV maker in which users can quickly and dynamically render their education and career history into a CV format.
 
-<img width="1418" alt="cv" src="https://user-images.githubusercontent.com/74276666/196320179-3fc9b424-596d-4df6-8b99-7f156ec1a2a8.png">
+<img width="1422" alt="Screen Shot 2022-10-31 at 9 00 18 AM" src="https://user-images.githubusercontent.com/74276666/199013823-a862aaaa-53ad-461d-b36a-8a91171da4c6.png">
 
 **You can see a LIVE version of the form here:** https://cyruscvmaker.netlify.app
 
 # How It's Made:
-Tech used: React.js, HTML, CSS, JS
+Tech used: React.js, Material UI, HTML, CSS, JS
 
-This CV Maker was made with React.
+This CV Maker was made with React and Material UI.
 
 # Optimizations
-If given more time with the project, I'd write many more parameters for a user to fill in on the screen to further flesh out their CV. Additionally, I'd add in functionality to allow users to dyanimically add in and subtract work experience sections. Furthermore, it'd be interesting to allow users to choose from multiple pre-built CV designs, rather than the current default one. 
+If given more time with the project, I'd write several more form parameters and sections for a user to fill in to further flesh out their CV (maybe skills or volunteering section). Another cool thing would be to make the addition of these sections optional. Additionally, it'd be interesting to allow users to choose from multiple pre-built CV designs, rather than the current default one. 
 
 # Lessons Learned:
-This project was some great practice with many of the things I've learned about React. My main focus for this project was on getting comfortable with class based components specifically at first (which I'll eventually rewrite to function based components). I also learned a lot about organizing React projects, and some best practices in regards to passing state attributes around. I had some issues given the lack of a state manager like Redux that I had a bit of trouble figuring out how to overcome. But eventually, I found some slick workarounds that seem obvious now, but weren't initially.
+This project was some great practice with many of the things I've learned about React. My first iterations of this this project focused on getting comfortable with class based components. After I wrote the entire program with class components, I then rewrote them all as functional components. I also learned a lot about organizing React projects, and some best practices in regards to passing state attributes around. I had some issues given the lack of a state manager like Redux that I had a bit of trouble figuring out how to overcome, mainly how to update parent state from child components. But eventually, I found a really simple, straightforward solution that I hadn't initially thought of - simply adding callback helper functions in the parent component to be passed as props to children.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -55,33 +54,3 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
